@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Persing's Portfolio</title>
+    <style>
+    /* --- CSS VARIABLES: Inspired by "fabs" --- */
+    :root {
+        --primary: #F2EFE9;        /* The Cream/Off-white from the logo */
+        --bg-color: #0A0A0A;       /* Deep Charcoal/Black background */
+        --surface: #141414;        /* Slightly lighter black for cards */
+        --text-main: #F2EFE9;      /* Primary text matches the logo */
+        --text-light: #949494;     /* Muted grey for descriptions */
+        --accent: #FFFFFF;         /* Pure white for highlights */
+        --border-color: #262626;   /* Subtle borders */
+        --border-radius: 4px;      /* Sharp, professional corners */
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Import Professional Font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- LAYOUT --- */
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    .hidden { display: none !important; }
+
+    /* --- HEADER --- */
+    header {
+        padding: 40px 0;
+        background-color: var(--bg-color);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        text-transform: lowercase; /* Matching the 'fabs' style */
+        cursor: pointer;
+    }
+
+    /* --- HERO --- */
+    .hero {
+        padding: 100px 0 60px;
+        text-align: left; /* Align left for a modern editorial look */
+    }
+
+    .hero h1 {
+        font-size: 4rem; /* Big, bold display type */
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        margin-bottom: 24px;
+        line-height: 1;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        max-width: 500px;
+    }
+
+    /* --- GRID GALLERY --- */
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2-column grid feels more premium */
+        gap: 40px;
+        padding-bottom: 100px;
+    }
+
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        border-color: var(--text-light);
+    }
+
+    .card:hover .card-footer {
+        border-color: var(--primary); /* Highlight on hover */
+        color: var(--accent);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        filter: grayscale(20%); /* Slight desaturation for cohesion */
+        transition: filter 0.3s;
+    }
+
+    .card:hover .card-image {
+        filter: grayscale(0%);
+    }
+
+    .card-content {
+        padding: 32px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .card-desc {
+        font-size: 1rem;
+        color: var(--text-light);
+        margin-bottom: 24px;
+    }
+
+    .card-footer {
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+        font-size: 0.7rem; /* Smaller, more sophisticated font size */
+        text-transform: uppercase;
+        letter-spacing: 0.15em; /* Increased tracking for readability */
+        border-bottom: 1px solid var(--text-light); /* Subtler border */
+        width: fit-content;
+        padding-bottom: 4px;
+        margin-top: 10px;
+        transition: border-color 0.3s ease;
+    }
+
+    .card-footer svg {
+        width: 12px; /* Smaller icon */
+        height: 12px;
+        margin-left: 8px;
+    }
+
+    /* --- DETAIL VIEW --- */
+    .detail-header {
+        padding: 80px 0 40px;
+    }
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        background: none;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        padding: 6px 12px; /* Reduced padding */
+        font-size: 0.75rem; /* Smaller text */
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-radius: 2px; /* Sharper corners */
+        cursor: pointer;
+        font-family: inherit;
+        margin-bottom: 30px;
+        transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+        background: var(--surface);
+        border-color: var(--text-main);
+        color: var(--text-main);
+    }
+
+    .back-btn svg {
+        width: 14px; /* Scaled down arrow */
+        height: 14px;
+        margin-right: 6px;
+    }
+
+    .report-meta h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .iframe-container {
+        background: #111;
+        padding: 10px;
+        border: 1px solid var(--border-color);
+        margin-bottom: 100px;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+        padding: 60px 0;
+        border-top: 1px solid var(--border-color);
+        color: var(--text-light);
+        display: flex;
+    }
+
+    .footer-social-links {
+        display: flex;
+        justify-content: center;
+        gap: 24px; /* Slightly more breathing room */
+        padding: 20px 0;
+    }
+
+    .footer-social-links a {
+        color: var(--text-light); 
+        text-decoration: none !important; /* Removes those underscores */
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        line-height: 0; /* Prevents text-line artifacts */
+    }
+
+    .footer-social-links a:hover {
+        color: var(--primary); /* Glows cream on hover */
+        transform: translateY(-2px);
+    }
+
+    .footer-social-links svg {
+        width: 20px; /* Uniform, sophisticated size */
+        height: 20px;
+        stroke-width: 1.5px; /* Thinner lines look more "designer" */
+    }
+
+    footer p {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-light);
+        margin-top: 10px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+        .hero h1 { font-size: 2.5rem; }
+        .dashboard-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container header-content">
+            <div class="logo" onclick="goHome()">
+                JeremyPersing.com
+            </div>
+            <!-- Could add social links here -->
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="main-content">
+        
+        <!-- HOME / GALLERY VIEW -->
+        <div id="home-view" class="fade-in">
+            <div class="container">
+                <section class="hero">
+                    <h1>Jeremy Persing's Portfolio</h1>
+                </section>
+
+                <section class="dashboard-grid" id="grid-container">
+                    <!-- Cards will be injected here by JavaScript -->
+                </section>
+            </div>
+        </div>
+
+        <!-- DETAIL / REPORT VIEW -->
+        <div id="detail-view" class="hidden fade-in">
+            <div class="container">
+                <div class="detail-header">
+                    <button class="back-btn" onclick="goHome()">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                        Back to Portfolio
+                    </button>
+                    <div class="report-meta">
+                        <h1 id="detail-title">Report Title</h1>
+                        <p id="detail-desc">Report description goes here...</p>
+                    </div>
+                </div>
+
+                <div class="iframe-container" id="iframe-wrapper">
+                    <!-- Iframe injected here -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        
+        <div class="container">
+            <div class="footer-social-links">
+                <a href="https://github.com/JeremyPersing" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+
+                <a href="mailto:jpersing1999@gmail.com" aria-label="Email">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+
+                <a href="https://www.linkedin.com/in/jeremy-persing/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+            <small >&copy; JeremyPersing.com</small>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Data Structure mapping IDs to content
+        const reports = [
+            {
+                id: 'jobs',
+                title: 'Job Market Analytics',
+                description: 'A comprehensive dashboard analyzing data jobs. It features salary distributions, job categories by company, locations, and skill demand analysis. Data was sourced from a kaggle dataset.',
+                img: 'images/jobs_1.png',
+                iframe: `<iframe title="Job Board" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiOTkzNTBjNTUtOGQ2Yy00YTFlLWI3ZDEtYzI4Mjc1YjQ3NGUwIiwidCI6IjQ5MjI2Mzg5LTYzZDgtNGU3Yi1iMTAxLTA5ZjUwM2MzYTg2YiIsImMiOjZ9" frameborder="0" allowFullScreen="true"></iframe>`
+            },
+            {
+                id: 'stocks_dash',
+                title: 'Stock Market Dashboard',
+                description: 'An interactive dashboard providing insights into stock market trends, individual stock performance, sector analysis, and market indices over time. Data was sourced from financialmodelingprep.com.',
+                img: 'images/stocks_im_1.png',
+                iframe: `<iframe title="Stock Dashboard" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiMzcxZjMwN2EtMDQwZS00YmYwLWEzZTctMmIzMWM0Yzc0MmFhIiwidCI6IjQ5MjI2Mzg5LTYzZDgtNGU3Yi1iMTAxLTA5ZjUwM2MzYTg2YiIsImMiOjZ9" frameborder="0" allowFullScreen="true"></iframe>`
+            },
+            {
+                id: 'zillow',
+                title: 'Zillow Dashboard',
+                description: 'A dashboard to mimic zillow.com in Power BI using data scraped from zillow. I built this to test the photo, map, and card list capabilities in Power BI.',
+                img: 'images/re_1.png',
+                iframe: `<iframe title="Zillow Listings" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiMjE2NDQ5ZDUtOGM5OC00N2M3LWFkMGQtZWY4MjUwMWU2YmUzIiwidCI6IjQ5MjI2Mzg5LTYzZDgtNGU3Yi1iMTAxLTA5ZjUwM2MzYTg2YiIsImMiOjZ9" frameborder="0" allowFullScreen="true"></iframe>`
+            },
+            {
+                id: 'stocks_report',
+                title: 'Corporations Report',
+                description: 'An in-depth report on major corporations including Apple, Microsoft, Google, Amazon, and Meta. This report covers financial metrics, market performance, and company profiles. Data was sourced from financialmodelingprep.com.',
+                img: 'images/stocks_1.png',
+                iframe: `<iframe title="Stocks Report" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiMjE1ZDdlODYtZmVjZS00ZTY5LWFkOTYtMGRhN2E3MTg4OGRjIiwidCI6IjQ5MjI2Mzg5LTYzZDgtNGU3Yi1iMTAxLTA5ZjUwM2MzYTg2YiIsImMiOjZ9" frameborder="0" allowFullScreen="true"></iframe>`
+            }
+        ];
+
+        // DOM Elements
+        const homeView = document.getElementById('home-view');
+        const detailView = document.getElementById('detail-view');
+        const gridContainer = document.getElementById('grid-container');
+        
+        const detailTitle = document.getElementById('detail-title');
+        const detailDesc = document.getElementById('detail-desc');
+        const iframeWrapper = document.getElementById('iframe-wrapper');
+
+        // Initialize Gallery
+        function initGallery() {
+            gridContainer.innerHTML = '';
+            reports.forEach(report => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.onclick = () => openReport(report.id);
+                
+                card.innerHTML = `
+                    <img src="${report.img}" alt="${report.title}" class="card-image" loading="lazy">
+                    <div class="card-content">
+                        <h3 class="card-title">${report.title}</h3>
+                        <p class="card-desc">${report.description}</p>
+                        <div class="card-footer">
+                            View Report
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </div>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+            });
+        }
+
+        // Open Individual Report
+        function openReport(id) {
+            const report = reports.find(r => r.id === id);
+            if (!report) return;
+
+            // Populate content
+            detailTitle.textContent = report.title;
+            detailDesc.textContent = report.description;
+            iframeWrapper.innerHTML = report.iframe;
+
+            // Switch Views
+            window.scrollTo(0, 0);
+            homeView.classList.add('hidden');
+            detailView.classList.remove('hidden');
+        }
+
+        // Go Back to Home
+        function goHome() {
+            // Clear iframe to stop any background processes/audio (optional but good practice)
+            iframeWrapper.innerHTML = '';
+            
+            window.scrollTo(0, 0);
+            detailView.classList.add('hidden');
+            homeView.classList.remove('hidden');
+        }
+
+        // Run on load
+        document.addEventListener('DOMContentLoaded', initGallery);
+
+    </script>
+</body>
+</html>
