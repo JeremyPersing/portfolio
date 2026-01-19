@@ -51,6 +51,32 @@
         border-bottom: 1px solid var(--border-color);
     }
 
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Style for the Resume Button */
+    .resume-btn {
+        text-decoration: none;
+        color: var(--text-main);
+        border: 1px solid var(--border-color);
+        padding: 8px 16px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-radius: var(--border-radius);
+        transition: all 0.3s ease;
+    }
+
+    .resume-btn:hover {
+        background-color: var(--surface);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
     .logo {
         font-size: 1.2rem;
         font-weight: 800;
@@ -247,7 +273,46 @@
     /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
         .hero h1 { font-size: 2.5rem; }
+
         .dashboard-grid { grid-template-columns: 1fr; }
+
+        /* Stack the header elements vertically */
+        .header-content {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* Shrink the logo slightly for mobile */
+        .logo {
+            font-size: 1.1rem;
+        }
+
+        /* Adjust Hero Title size to fit mobile screens better */
+        .hero {
+            padding: 60px 0 40px;
+        }
+
+        .hero h1 { 
+            font-size: 2.2rem; 
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        /* Make the resume button a bit more prominent when stacked */
+        .resume-btn {
+            width: fit-content;
+            padding: 10px 20px;
+        }
+
+        /* Drop to 1 column for the project cards */
+        .dashboard-grid { 
+            grid-template-columns: 1fr; 
+            gap: 30px;
+        }
     }
 </style>
 </head>
@@ -259,7 +324,9 @@
             <div class="logo" onclick="goHome()">
                 JeremyPersing.com
             </div>
-            <!-- Could add social links here -->
+            <a href="Jeremy_Persing_Resume.pdf" class="resume-btn" download="Jeremy_Persing_Resume.pdf">
+                Download Resume
+            </a>
         </div>
     </header>
 
