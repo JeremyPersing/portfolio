@@ -1,7 +1,7 @@
 # Useful DAX Expressions
 
 ## Calendar
-```DAX
+```sql
 Date = ADDCOLUMNS(
     CALENDARAUTO(),
     "Year", YEAR([Date]),
