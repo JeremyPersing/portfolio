@@ -1,10 +1,11 @@
 # Useful DAX Expressions
 
-### Calendar
+### Date Table
 After creating,
+    - Mark table as date table
     - sort `Month` by `Month Number`
     - sort `Weekday` by `Weekday Number`
-    
+
 ```sql
 Date = ADDCOLUMNS(
     CALENDARAUTO(),
