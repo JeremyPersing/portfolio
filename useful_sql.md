@@ -2,7 +2,7 @@
 
 ### Turning Row Categories into Column Counts
 
-base_data
+**base_data**
 | user_id | time_stamp          | action    |
 |---------|--------------------|-----------|
 | 3       | 2021-01-06 03:30:46 | timeout   |
@@ -13,14 +13,12 @@ base_data
 | 2       | 2021-01-22 00:00:00 | confirmed |
 | 2       | 2021-02-28 23:59:59 | timeout   |
 
-
-Return
+**return**
 | user_id | total | timeout | confirmed |
 |---------|-------|---------|-----------|
 | 2       | 2     | 1       | 1         |
 | 3       | 2     | 2       | 0         |
 | 7       | 3     | 0       | 3         |
-
 
 ```sql
 SELECT
@@ -29,5 +27,6 @@ SELECT
     SUM(CASE WHEN [action] = 'timeout' THEN 1 ELSE 0) AS timeout,
     SUM(CASE WHEN [action] = 'confirmed' THEN 1 ELSE 0) AS confirmed
 FROM base_data
-GROUP BY user_id;
+GROUP BY user_id
+ORDER BY user_id DESC;
 ```
