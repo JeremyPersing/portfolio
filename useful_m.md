@@ -1,6 +1,6 @@
 # Useful M Code Expressions
 
-# Clean Column Names Function
+## Clean Column Names Function
 ```js
 let
   FormatColumnNames = (tbl as table) => 

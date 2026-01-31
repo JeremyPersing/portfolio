@@ -1,6 +1,6 @@
 # Useful DAX Expressions
 
-## Calendar
+### Calendar
 ```sql
 Date = ADDCOLUMNS(
     CALENDARAUTO(),
