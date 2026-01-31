@@ -1,6 +1,10 @@
 # Useful DAX Expressions
 
 ### Calendar
+After creating,
+    - sort `Month` by `Month Number`
+    - sort `Weekday` by `Weekday Number`
+    
 ```sql
 Date = ADDCOLUMNS(
     CALENDARAUTO(),
@@ -8,6 +12,7 @@ Date = ADDCOLUMNS(
     "Month", FORMAT([Date], "mmm"),
     "Month Number", MONTH([Date]),
     "Weekday", FORMAT([Date], "ddd"),
+    "Weekday Number", WEEKDAY([Date]),
     "Day", DAY([Date]),
     "Quarter", "Q" & TRUNC((MONTH([Date]) - 1) / 3) + 1
 )
