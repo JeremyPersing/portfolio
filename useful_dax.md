@@ -18,3 +18,17 @@ Date = ADDCOLUMNS(
     "Quarter", "Q" & TRUNC((MONTH([Date]) - 1) / 3) + 1
 )
 ```
+or
+
+```sql
+Date = ADDCOLUMNS(
+    CALENDAR(MIN(Sales[Sale Date]), MAX(Sales[Sale Date])),
+    "Year", YEAR([Date]),
+    "Month", FORMAT([Date], "mmm"),
+    "Month Number", MONTH([Date]),
+    "Weekday", FORMAT([Date], "ddd"),
+    "Weekday Number", WEEKDAY([Date]),
+    "Day", DAY([Date]),
+    "Quarter", "Q" & TRUNC((MONTH([Date]) - 1) / 3) + 1
+)
+```
