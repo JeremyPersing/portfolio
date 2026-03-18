@@ -227,6 +227,11 @@
         margin-bottom: 100px;
     }
 
+    .info-text {
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+    }
+
     /* --- FOOTER --- */
     footer {
         padding: 60px 0;
@@ -362,6 +367,9 @@
                     </div>
                 </div>
 
+
+                <p class="info-text" >Note that you can make the report full screen by clicking the double-sided arrow icon in the bottom right of the window below. The best viewing experience will be on a Desktop.</p>
+                
                 <div class="iframe-container" id="iframe-wrapper">
                     <!-- Iframe injected here -->
                 </div>
@@ -393,8 +401,15 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Data Structure mapping IDs to content
+        // Data Structure mapping IDs to content 
         const reports = [
+            {
+                id: 'kpis',
+                title: 'Company KPIs',
+                description: `Executive level customers usually want a single place where they can "see everything in a single place". These all inclusive dashboards usually need to display the KPIs that ensure the CIO's part of the business is running smoothly. This report was built to demonstrate how this could be done using the new card visual in Power BI. The report brings in data from 4 fact tables and 2 dimension tables to show important metrics which every investor should be interested in for some of the top companies in the world.`,
+                img: 'images/kpi_1.png',
+                iframe: `<iframe title="Company KPIs" width="100%" height="600" src="https://app.powerbi.com/view?r=eyJrIjoiN2JjYjc4NGUtYmQzZS00MDgwLThkNDEtNTMyZjViZjRjNjM1IiwidCI6IjQ5MjI2Mzg5LTYzZDgtNGU3Yi1iMTAxLTA5ZjUwM2MzYTg2YiIsImMiOjZ9" frameborder="0" allowFullScreen="true"></iframe>`
+            },
             {
                 id: 'sales',
                 title: 'Sales Dashboard',
